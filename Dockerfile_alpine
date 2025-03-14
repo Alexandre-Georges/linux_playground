@@ -1,0 +1,23 @@
+FROM alpine:latest
+
+RUN apk add --update --no-cache openssh-server sudo bash shadow docs
+
+RUN chsh -s /bin/bash root
+COPY .bash_profile /root/.bash_profile
+
+RUN adduser -s /bin/bash -D nwm
+RUN echo -n 'nwm:pass' | chpasswd
+COPY .bash_profile /home/nwm/.bash_profile
+RUN chown nwm /home/nwm/.bash_profile
+RUN echo "nwm ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+#RUN echo 'PasswordAuthentication yes' >> /etc/ssh/sshd_config
+
+RUN ssh-keygen -A
+
+EXPOSE 22
+CMD ["/usr/sbin/sshd", "-D", "-e"]
+
+# docker build -t for_testing . && docker run --name for_testing -p 127.0.0.1:22:22 for_testing
+# docker kill for_testing && docker rm for_testing && docker rmi for_testing
+
