@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
-RUN apt-get update
-RUN apt-get install -y openssh-server sudo less curl vim
+RUN apt update
+RUN apt install -y openssh-server sudo less curl vim man-db
 
 RUN mkdir /run/sshd
 
