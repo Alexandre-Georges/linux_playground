@@ -14,11 +14,9 @@ docker kill playground; docker rm playground; docker rmi playground
 
 ## Log in
 
-```shell
-ssh play@localhost
-```
-
-The password is `pass`.
+Hostname: `localhost`
+Username: `play`
+Password: `pass`
 
 ## To remove the old SSH host
 
