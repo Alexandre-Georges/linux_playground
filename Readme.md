@@ -1,12 +1,12 @@
 # Linux playground
 
-## Build the image
+## Build and run the image
 
 ```shell
 docker build --tag playground . && docker run --detach --name playground -p 127.0.0.1:22:22 playground
 ```
 
-## Start the container
+## Kill and delete the container and remove the image
 
 ```shell
 docker kill playground; docker rm playground; docker rmi playground
